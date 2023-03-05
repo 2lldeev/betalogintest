@@ -68,10 +68,12 @@ const firebaseConfig = {
       console.log(user_data)
   
       // DOne
-      location.href = "main.html";
+      
       
       localStorage.setItem("email ", email);
       localStorage.setItem("password ", password);
+
+      location.href = "main.html";
     })
     .catch(function(error) {
       // Firebase will use this to alert of its errors
@@ -112,14 +114,13 @@ const firebaseConfig = {
       database_ref.child('users/' + user.uid).update(user_data);
   
       // DOne
-      if (localStorage.getItem("email ") === null || localStorage.getItem("password ") === null) {
+
           localStorage.setItem("email ", email);
           localStorage.setItem("password ", password);
-      }
 
-      location.href = "main.html";
       
-  
+      
+      location.href = "main.html";
     })
     .catch(function(error) {
       // Firebase will use this to alert of its errors
