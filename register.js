@@ -5,11 +5,6 @@ else{
   location.href = "main.html";
 }  
 
-
-
-
-
-
 // Your web app's Firebase configuration
 const firebaseConfig = {
   apiKey: "AIzaSyBJ6-gQPaPSz80ZGneKrEe2Fd380ERlz74",
@@ -20,7 +15,18 @@ const firebaseConfig = {
   messagingSenderId: "1077555981459",
   appId: "1:1077555981459:web:a215c1a21a41905783b166",
   measurementId: "G-3FKY23Z156"
-  };
+};
+
+
+function sleep(milliseconds) {
+  const date = Date.now();
+  let currentDate = null;
+  do {
+    currentDate = Date.now();
+  } while (currentDate - date < milliseconds);
+}
+
+
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
   // Initialize variables
@@ -30,9 +36,9 @@ const firebaseConfig = {
   // Set up our register function
   function register () {
     // Get all our input fields
-    var email = document.getElementById('email').value;
-    var password = document.getElementById('password').value;
-    var full_name = document.getElementById('full_name').value;
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+    const full_name = document.getElementById('full_name').value;
   
     // Validate input fields
     if (validate_email(email) == false || validate_password(password) == false) {
@@ -68,12 +74,17 @@ const firebaseConfig = {
       console.log(user_data)
   
       // DOne
+      sleep(5000);
       
       
       localStorage.setItem("email ", email);
       localStorage.setItem("password ", password);
 
-      location.href = "main.html";
+      sleep(1000);
+
+      console.log("redirecting...")
+      location.href = "main.html"
+
     })
     .catch(function(error) {
       // Firebase will use this to alert of its errors
@@ -112,15 +123,19 @@ const firebaseConfig = {
   
       // Push to Firebase Database
       database_ref.child('users/' + user.uid).update(user_data);
+
+
+      sleep(5000);
   
       // DOne
 
-          localStorage.setItem("email ", email);
-          localStorage.setItem("password ", password);
+      localStorage.setItem("email ", email);
+      localStorage.setItem("password ", password);
 
-      
-      
-      location.href = "main.html";
+      sleep(1000);
+
+      console.log("redirecting...")
+      location.href = "main.html"
     })
     .catch(function(error) {
       // Firebase will use this to alert of its errors
